@@ -14,7 +14,7 @@ onload = function() {
   };
 
   document.querySelector('#home').onclick = function() {
-    navigateTo('http://www.google.com/');
+    navigateTo('http://internetzuil.hro.nl/');
   };
 
   document.querySelector('#reload').onclick = function() {
