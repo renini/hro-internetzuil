@@ -125,3 +125,15 @@ case we use a different background color and label). */
 .killed #sad-webview #crashed-label {
   display: none;
 }
+
+/* To hide the controls when we are on the startpage */
+#controls.hide {
+  display: none;
+}
+
+#controls.show {
+  display: -webkit-flex;
+  -webit-flex-direction: column;
+}
+
+

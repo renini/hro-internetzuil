@@ -47,6 +47,13 @@ onload = function() {
   webview.addEventListener('loadabort', handleLoadAbort);
   webview.addEventListener('loadredirect', handleLoadRedirect);
   webview.addEventListener('loadcommit', handleLoadCommit);
+  
+  /* hide controls if cannot go back so we are on the "homepage" :) */
+  /*
+  if (!webview.canGoBack()) {
+    document.getElementById('controls').style.display = 'none';
+  }
+  */
 };
 
 function navigateTo(url) {
@@ -99,6 +106,15 @@ function handleLoadCommit(event) {
   var webview = document.querySelector('webview');
   document.querySelector('#back').disabled = !webview.canGoBack();
   document.querySelector('#forward').disabled = !webview.canGoForward();
+  
+  /* hide controls if cannot go back so we are on the "homepage" :) */
+  if (!webview.canGoBack()) {
+    document.getElementById('controls').setAttribute('class', 'hide');
+  } else {
+    /*document.getElementById('controls').removeAttribute('class', 'hide');*/
+    document.getElementById('controls').setAttribute('class', 'show');
+  }
+  
 }
 
 function handleLoadStart(event) {
