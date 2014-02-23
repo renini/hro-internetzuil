@@ -49,11 +49,15 @@ onload = function() {
   webview.addEventListener('loadcommit', handleLoadCommit);
   
   /* first try to capture new window */
+  webview.addEventListener('newwindow', handleNewWindow);
+  /*
   webview.addEventListener('newwindow', function(e) {
-    var newWebview = document.createElement('webview');
-    document.body.appendChild(newWebview);
+    var newWebview = document.querySelector('webview');
+    //var newWebview = document.createElement('webview');
+    //document.body.appendChild(newWebview);
     e.window.attach(newWebview);
   });
+  */
   
   /* hide controls if cannot go back so we are on the "homepage" :) */
   /*
@@ -62,6 +66,23 @@ onload = function() {
   }
   */
 };
+
+function handleNewWindow(event) {
+  var width = event.initialWidth || 640;
+  var height = event.initialHeight || 480;
+  event.preventDefault();
+  chrome.app.window.create('newwindow.html', {
+    top: 0,
+    left: 0,
+    width: width,
+    height: height,
+  }, function(newwindow) {
+    newwindow.contentWindow.onload = function(e) { 
+      var newwebview = newwindow.contentWindow.document.querySelector("webview");
+      event.window.attach(newwebview);
+    }   
+  }); 
+}
 
 function navigateTo(url) {
   resetExitedState();
