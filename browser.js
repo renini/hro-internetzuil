@@ -48,6 +48,13 @@ onload = function() {
   webview.addEventListener('loadredirect', handleLoadRedirect);
   webview.addEventListener('loadcommit', handleLoadCommit);
   
+  /* first try to capture new window */
+  webview.addEventListener('newwindow', function(e) {
+    var newWebview = document.createElement('webview');
+    document.body.appendChild(newWebview);
+    e.window.attach(newWebview);
+  });
+  
   /* hide controls if cannot go back so we are on the "homepage" :) */
   /*
   if (!webview.canGoBack()) {
