@@ -1,7 +1,15 @@
 # HR InternetZuil
 
-Chrome app als uitgeklede browser te gebruiken voor de internetzuilen op de Hogeschool Rotterdam.
-De app start fullscreen en de esc toets is om hierin te blijven disabled.
+Chrome app that is a slimmed down browser for use as a kiosk.
+The main intentional use was at the Rotterdam University as an 'InternetZuil'.
+
+It launches a fullscreen browser to a hardcoded url with minimal navigation possibilities.
+
+TODO:
+
+- clear cache/history/cookies etc after idle
+- allow popups to behave correctly
+- make it student proof, disallow all local access
 
 ## Resources
 
